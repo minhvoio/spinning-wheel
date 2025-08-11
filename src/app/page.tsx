@@ -62,6 +62,7 @@ export default function Home() {
 
   const handleReset = useCallback(() => {
     setState((prev) => ({
+      ...prev,
       hasSpun: false,
       wheels: prev.wheels.map((w) => ({
         ...w,
@@ -97,7 +98,7 @@ export default function Home() {
           spinId: crypto.randomUUID(),
         };
       });
-      return { wheels: updated, hasSpun: true };
+      return { ...prev, wheels: updated, hasSpun: true };
     });
   }, []);
 
